@@ -1,5 +1,7 @@
 import Image from "next/image";
+import sizingStyles from "./sizing.css";
 import styles from "./page.module.css";
+import hero__img from "./assets/images/gray-suit.png";
 
 /*** Components ***/
 import Header from "./components/sections/Header/Header";
@@ -13,7 +15,7 @@ export default function Home() {
   return (
     <div id="react-portfolio-page">
       <Header />
-      <Hero />
+      <Hero img={hero__img} />
       <Projects />
       <Skills />
       <Socials />

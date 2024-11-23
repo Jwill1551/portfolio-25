@@ -1,4 +1,5 @@
 #site-header {
+    position: relative;
     background-color: #001d2d;
     padding: 30px;
 }
@@ -11,6 +12,7 @@
 }
 
 #site-header .nav-item {
+    position: relative;
     color: white;
 }
 
@@ -19,5 +21,13 @@
 }
 
 #site-header .nav-item.active {
-    border: solid 2px red;
+    color: #47dbff;
+}
+
+#site-header .nav-item.active::before {
+    content: "";
+    border-bottom: solid 2px #47dbff;
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
 }
