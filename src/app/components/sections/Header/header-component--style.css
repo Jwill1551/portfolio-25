@@ -1,0 +1,23 @@
+#site-header {
+    background-color: #001d2d;
+    padding: 30px;
+}
+
+#site-header .nav-item_list {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+#site-header .nav-item {
+    color: white;
+}
+
+#site-header .nav-item:hover {
+    color: #47dbff;
+}
+
+#site-header .nav-item.active {
+    border: solid 2px red;
+}
