@@ -39,6 +39,18 @@
     padding: 90px;
 }
 
+.p-10 {
+    padding: 100px;
+}
+
+.p-11 {
+    padding: 110px;
+}
+
+.p-12 {
+    padding: 120px;
+}
+
 /* Padding for each side (pt-[size], pb-[size], pl-[size], pr-[size]) */
 .pt-0 {
     padding-top: 0px;
@@ -76,6 +88,22 @@
     padding-top: 80px;
 }
 
+.pt-9 {
+    padding-top: 90px;
+}
+
+.pt-10 {
+    padding-top: 100px;
+}
+
+.pt-11 {
+    padding-top: 110px;
+}
+
+.pt-12 {
+    padding-top: 120px;
+}
+
 .pb-0 {
     padding-bottom: 0px;
 }
@@ -109,6 +137,22 @@
 }
 
 .pb-8 {
+    padding-bottom: 80px;
+}
+
+.pb-9 {
+    padding-bottom: 80px;
+}
+
+.pb-10 {
+    padding-bottom: 80px;
+}
+
+.pb-11 {
+    padding-bottom: 80px;
+}
+
+.pb-12 {
     padding-bottom: 80px;
 }
 
