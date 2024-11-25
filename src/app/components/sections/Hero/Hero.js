@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./hero-component--style.css";
 import Image from "next/image";
+import Blue_Button from "../../buttons/Blue_Button";
 
 const Hero = (props) => {
   return (
@@ -13,7 +14,7 @@ const Hero = (props) => {
             with a passion for <span>Christ</span>.
           </h2>
 
-          <button className="hero_btn">Download Resume</button>
+          <Blue_Button url="#" text="Download Resume" />
         </div>
         <div className="col-4 hero_column--right">
           <div className="hero_img-wrapper">

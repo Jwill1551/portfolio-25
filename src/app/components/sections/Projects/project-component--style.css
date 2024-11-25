@@ -1,0 +1,9 @@
+#projects .project__title {
+    font-size: 40px;
+}
+
+#projects .project__title::before {
+    content: "";
+    position: absolute;
+    border: solid 1px white;
+}

@@ -23,6 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+
+        <script src="./jquery-3.7.1.min.js" async></script>
+        <script src="./slick.min.js" async></script>
       </body>
     </html>
   );
