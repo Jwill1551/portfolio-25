@@ -1,0 +1,59 @@
+// Config
+$gutter: 8px;
+$util-size: 30; // how many steps (0 → 6 = 7 total values)
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// --- Core generator ---
+@mixin generate-spacing($prefix, $property, $max: $util-size) {
+  @for $i from 0 through $max {
+    $val: $i * $gutter;
+
+    .#{$prefix}-#{$i} { #{$property}: $val !important; }
+
+    .#{$prefix}t-#{$i} { #{$property}-top: $val !important; }
+    .#{$prefix}b-#{$i} { #{$property}-bottom: $val !important; }
+    .#{$prefix}l-#{$i} { #{$property}-left: $val !important; }
+    .#{$prefix}r-#{$i} { #{$property}-right: $val !important; }
+
+    .#{$prefix}x-#{$i} {
+      #{$property}-left: $val !important;
+      #{$property}-right: $val !important;
+    }
+    .#{$prefix}y-#{$i} {
+      #{$property}-top: $val !important;
+      #{$property}-bottom: $val !important;
+    }
+
+    @each $breakpoints, $size in $breakpoints {
+      @media (min-width: $size) {
+        .#{$prefix}-#{$breakpoints}-#{$i} { #{$property}: $val !important; }
+
+        .#{$prefix}t-#{$breakpoints}-#{$i} { #{$property}-top: $val !important; }
+        .#{$prefix}b-#{$breakpoints}-#{$i} { #{$property}-bottom: $val !important; }
+        .#{$prefix}l-#{$breakpoints}-#{$i} { #{$property}-left: $val !important; }
+        .#{$prefix}r-#{$breakpoints}-#{$i} { #{$property}-right: $val !important; }
+
+        .#{$prefix}x-#{$breakpoints}-#{$i} {
+          #{$property}-left: $val !important;
+          #{$property}-right: $val !important;
+        }
+        .#{$prefix}y-#{$breakpoints}-#{$i} {
+          #{$property}-top: $val !important;
+          #{$property}-bottom: $val !important;
+        }
+      }
+    }
+  }
+}
+
+// --- Responsive wrapper ---
+@mixin spacing-utilities {
+  // Base (no breakpoint)
+  @include generate-spacing(m, margin);
+  @include generate-spacing(p, padding);
+}

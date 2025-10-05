@@ -1,0 +1,11 @@
+.portfolio-header {
+    background-color: #001D2D;
+}
+
+.portfolio-header .portfolio-header__nav-list {
+    list-style: none;
+}
+
+.portfolio-header .portfolio-header__nav-list li a {
+    text-decoration: none;
+}

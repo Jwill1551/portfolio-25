@@ -1,0 +1,42 @@
+.portfolio-skills .skill-console {
+    border: solid 4px #47DBFF;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.portfolio-skills .skill-console .skill-console__title {
+    background-color: #47DBFF;
+}
+
+.portfolio-skills .skill-console .skill-bar__content {
+    border: solid 4px #47DBFF;
+    border-radius: 25px;
+}
+
+.portfolio-skills .skill-console .skill-bar__skill-title,
+.portfolio-skills .skill-console .skill-bar__skill-level {
+    color: #47DBFF;
+}
+
+.skill-console .skill-console__content {
+    background-color: #001D2D;
+}
+
+.skill-console .skill-console__title--wrapper {
+    background-color: #47DBFF;
+    position: relative;
+}
+
+.skill-console .skill-console__bullets {
+    position: absolute;
+    left: 0;
+}
+
+.skill-console .skill-console__bullet {
+    background-color: black;
+    width: 15px;
+    height: 15px;
+    display: block;
+    border-radius: 25px;
+    margin: 8px;
+}
