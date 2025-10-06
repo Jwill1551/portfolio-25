@@ -1,0 +1,22 @@
+.portfolio-contact {
+    background: #00466E;
+    background: linear-gradient(180deg, rgba(0, 70, 110, 1) 0%, rgba(1, 63, 99, 1) 35%, rgba(0, 29, 45, 1) 100%);
+}
+
+.portfolio-contact__content .portfolio-contact__icon {
+    max-width: 50px;
+}
+
+.portfolio-contact__content::before {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 4px;
+    background-color: #ffffff;
+    position: absolute;
+    transform: rotateY(25deg);
+}
+
+.portfolio-contact__btn {
+    background-color: #ffffff;
+}
