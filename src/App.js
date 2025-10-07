@@ -11,7 +11,7 @@ import Footer from './components/layout/footer/footer';
 
 function App() {
   return (
-    <div className="App container-fluid">
+    <div className="App container is-fluid px-0">
       <Header />
       <Hero />
       <Projects />

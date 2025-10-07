@@ -1,11 +1,16 @@
-@import '../../../node_modules/bulma/bulma.scss';
-@import './sass_files/utils.scss';
-@import './sass_files/typography.scss';
-@import './sass_files/ada_compliance.scss';
+@use '../../../node_modules/bulma/bulma.scss';
+@use './sass_files/utils.scss';
+@use './sass_files/typography.scss';
+@use './sass_files/ada_compliance.scss';
 
 
 /*** Padding and Margin Classes ***/
-@include spacing-utilities;
+// --- Responsive wrapper ---
+@mixin spacing-utilities {
+  @include generate-spacing(m, margin);
+  @include generate-spacing(p, padding);
+}
+
 
 /*** Global & Default Styles ***/
 section {

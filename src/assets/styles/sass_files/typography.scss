@@ -173,25 +173,25 @@ img.rounded-circle {
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-@include respond-to(mobile) {
+@include respond-to(sm) {
     .sm-text-center { text-align: center !important; }
     .sm-text-left { text-align: left !important; }
     .sm-text-right { text-align: right !important; }
 }
 
-@include respond-to(tablet) {
+@include respond-to(md) {
   .md-text-center { text-align: center !important; }
   .md-text-left { text-align: left !important; }
   .md-text-right { text-align: right !important; }
 }
 
-@include respond-to(desktop) {
+@include respond-to(lg) {
   .lg-text-center { text-align: center !important; }
   .lg-text-left { text-align: left !important; }
   .lg-text-right { text-align: right !important; }
 }
 
-@include respond-to(fullhd) {
+@include respond-to(xl) {
   .xl-text-center { text-align: center !important; }
   .xl-text-left { text-align: left !important; }
   .xl-text-right { text-align: right !important; }

@@ -1,0 +1,150 @@
+.mobile-header {
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+}
+
+/* Hamburger / X icon */
+.menu-toggle {
+  background: none;
+  border: 2px solid #00c8ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-icon,
+.close-icon {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: #00c8ff;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background: #00c8ff;
+  left: 0;
+  transition: 0.3s;
+}
+
+.menu-icon::before {
+  top: -6px;
+}
+
+.menu-icon::after {
+  top: 6px;
+}
+
+/* When menu is open, turn into “X” */
+.menu-toggle.open .menu-icon {
+  background: transparent;
+}
+
+.menu-toggle.open .menu-icon::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.open .menu-icon::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* Mobile Nav */
+.mobile-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 19vh;
+  background: rgba(0, 29, 45, 1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+  z-index: 1;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+/* Close button inside nav */
+.menu-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: 2px solid #00c8ff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.menu-close .close-icon::before,
+.menu-close .close-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: #00c8ff;
+  transform-origin: center;
+}
+
+.menu-close .close-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menu-close .close-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Links */
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding-bottom: 16px;
+}
+
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.mobile-nav a.active {
+  border: 1px solid #00c8ff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.mobile-nav a:hover {
+  color: #00c8ff;
+}

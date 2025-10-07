@@ -21,16 +21,15 @@ export default function Projects() {
     arrows: true,
     dots: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
         {
         breakpoint: 1024, // below 1024px
         settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
-            infinite: true,
-            centerMode: true
+            infinite: true
         }
         },
         {
@@ -43,7 +42,7 @@ export default function Projects() {
     ]
     };
     return (
-        <section className="section is-fluid portfolio-projects">
+        <section className="section portfolio-projects">
             <SectionTitle title="Projects & Collaborations" />
                 <div className="project__wrapper w-100 py-sm-5 py-md-10 py-lg-15">
                         <Slider {...settings}>

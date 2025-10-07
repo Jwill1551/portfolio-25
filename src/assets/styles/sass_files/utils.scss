@@ -1,20 +1,39 @@
-// Config
-$gutter: 8px;
-$util-size: 30; // how many steps (0 → 6 = 7 total values)
-// Bulma breakpoint variables
+// --- Settings ---
+$gutter: 8px; // base unit
+$util-size: 30;   // 0 to 6 = 7 values total
+
+// --- Breakpoints matching Bulma ---
 $breakpoints: (
-  mobile:  0,
-  tablet:  769px,
-  desktop: 1024px,
-  widescreen: 1216px,
-  fullhd: 1408px
+  sm: 0,          // mobile
+  md: 769px,      // tablet
+  lg: 1024px,     // desktop
+  xl: 1216px,     // widescreen
+  xxl: 1408px     // fullhd
 );
+
+// --- Helper: Get next breakpoint's min-width ---
+@function next-breakpoint($breakpoint) {
+  $keys: map-keys($breakpoints);
+  $found: false;
+
+  @each $key in $keys {
+    @if $found {
+      @return map-get($breakpoints, $key);
+    }
+    @if $key == $breakpoint {
+      $found: true;
+    }
+  }
+
+  @return null; // if no next breakpoint (e.g., xxl)
+}
 
 // --- Core generator ---
 @mixin generate-spacing($prefix, $property, $max: $util-size) {
   @for $i from 0 through $max {
     $val: $i * $gutter;
 
+    // No-breakpoint (base)
     .#{$prefix}-#{$i} { #{$property}: $val !important; }
 
     .#{$prefix}t-#{$i} { #{$property}-top: $val !important; }
@@ -31,59 +50,51 @@ $breakpoints: (
       #{$property}-bottom: $val !important;
     }
 
-    @each $breakpoints, $size in $breakpoints {
-      @media (min-width: $size) {
-        .#{$prefix}-#{$breakpoints}-#{$i} { #{$property}: $val !important; }
+    // Responsive classes
+    @each $breakpoint, $min in $breakpoints {
+      $max: next-breakpoint($breakpoint);
 
-        .#{$prefix}t-#{$breakpoints}-#{$i} { #{$property}-top: $val !important; }
-        .#{$prefix}b-#{$breakpoints}-#{$i} { #{$property}-bottom: $val !important; }
-        .#{$prefix}l-#{$breakpoints}-#{$i} { #{$property}-left: $val !important; }
-        .#{$prefix}r-#{$breakpoints}-#{$i} { #{$property}-right: $val !important; }
+      @if $max != null {
+        @media (min-width: $min) and (max-width: $max - 0.02px) {
+          .#{$prefix}-#{$breakpoint}-#{$i} { #{$property}: $val !important; }
 
-        .#{$prefix}x-#{$breakpoints}-#{$i} {
-          #{$property}-left: $val !important;
-          #{$property}-right: $val !important;
+          .#{$prefix}t-#{$breakpoint}-#{$i} { #{$property}-top: $val !important; }
+          .#{$prefix}b-#{$breakpoint}-#{$i} { #{$property}-bottom: $val !important; }
+          .#{$prefix}l-#{$breakpoint}-#{$i} { #{$property}-left: $val !important; }
+          .#{$prefix}r-#{$breakpoint}-#{$i} { #{$property}-right: $val !important; }
+
+          .#{$prefix}x-#{$breakpoint}-#{$i} {
+            #{$property}-left: $val !important;
+            #{$property}-right: $val !important;
+          }
+
+          .#{$prefix}y-#{$breakpoint}-#{$i} {
+            #{$property}-top: $val !important;
+            #{$property}-bottom: $val !important;
+          }
         }
-        .#{$prefix}y-#{$breakpoints}-#{$i} {
-          #{$property}-top: $val !important;
-          #{$property}-bottom: $val !important;
+      } @else {
+        @media (min-width: $min) {
+          .#{$prefix}-#{$breakpoint}-#{$i} { #{$property}: $val !important; }
+
+          .#{$prefix}t-#{$breakpoint}-#{$i} { #{$property}-top: $val !important; }
+          .#{$prefix}b-#{$breakpoint}-#{$i} { #{$property}-bottom: $val !important; }
+          .#{$prefix}l-#{$breakpoint}-#{$i} { #{$property}-left: $val !important; }
+          .#{$prefix}r-#{$breakpoint}-#{$i} { #{$property}-right: $val !important; }
+
+          .#{$prefix}x-#{$breakpoint}-#{$i} {
+            #{$property}-left: $val !important;
+            #{$property}-right: $val !important;
+          }
+
+          .#{$prefix}y-#{$breakpoint}-#{$i} {
+            #{$property}-top: $val !important;
+            #{$property}-bottom: $val !important;
+          }
         }
       }
     }
   }
-}
-
-// --- Responsive wrapper ---
-@mixin spacing-utilities {
-  // Base (no breakpoint)
-  @include generate-spacing(m, margin);
-  @include generate-spacing(p, padding);
-}
-
-// Bulma breakpoint map (based on official source)
-$breakpoints: (
-  mobile:  0,
-  tablet:  769px,
-  desktop: 1024px,
-  widescreen: 1216px,
-  fullhd: 1408px
-);
-
-/// Helper: get next breakpoint value
-@function next-breakpoint($breakpoint) {
-  $keys: map-keys($breakpoints);
-  $found: false;
-
-  @each $key in $keys {
-    @if $found {
-      @return map-get($breakpoints, $key);
-    }
-    @if $key == $breakpoint {
-      $found: true;
-    }
-  }
-
-  @return null; // if no next breakpoint (e.g., fullhd)
 }
 
 /// Media query helper for Bulma breakpoints

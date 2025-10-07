@@ -18,10 +18,9 @@ export default function Skills() {
         {
         breakpoint: 1024, // below 1024px
         settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
-            infinite: true,
-            centerMode: true
+            infinite: true
         }
         },
         {
@@ -34,13 +33,13 @@ export default function Skills() {
     ]
     };
     return (
-        <section className="section is-fluid portfolio-skills">
+        <section className="section portfolio-skills">
             <div className="column is-full">
                 <SectionTitle title="Skills & Technologies" />
             </div>
             
-            <div class="portfolio-skills__wrapper--desktop is-hidden-mobile">
-                <div className="column">
+            <div class="columns is-multiline portfolio-skills__wrapper--desktop is-hidden-touch">
+                <div className="column is-half">
                     <SkillConsole title={"Frontend Development"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -49,7 +48,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column">
+                <div className="column is-half">
                     <SkillConsole title={"Backend Development"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -58,7 +57,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column">
+                <div className="column is-half">
                     <SkillConsole title={"Programming Languages"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -67,7 +66,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column">
+                <div className="column is-half">
                     <SkillConsole title={"Tools & Platforms"}
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -77,7 +76,7 @@ export default function Skills() {
                                 type={"badges"} />
                 </div>
             </div>
-            <div class="portfolio-skills__wrapper--mobile is-hidden-tablet">
+            <div class="portfolio-skills__wrapper--mobile is-hidden-desktop">
                 <Slider {...mobileSettings}>
                     <div className="column">
                         <SkillConsole title={"Frontend Development"} 

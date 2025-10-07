@@ -1,22 +1,86 @@
 .portfolio-contact {
-    background: #00466E;
-    background: linear-gradient(180deg, rgba(0, 70, 110, 1) 0%, rgba(1, 63, 99, 1) 35%, rgba(0, 29, 45, 1) 100%);
+  background: #00466e;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 70, 110, 1) 0%,
+    rgba(1, 63, 99, 1) 35%,
+    rgba(0, 29, 45, 1) 100%
+  );
 }
 
 .portfolio-contact__content .portfolio-contact__icon {
-    max-width: 50px;
+  max-width: 50px;
 }
 
 .portfolio-contact__content::before {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 4px;
+  background-color: #ffffff;
+  position: absolute;
+  transform: rotateY(25deg);
+  z-index: 1;
+}
+
+.portfolio-contact__social {
+  background-color: #ffffff;
+  display: flex;
+  border-radius: 50%;
+  padding: 8px;
+  z-index: 2;
+}
+
+.portfolio-contact__btn {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 75%;
+  color: black;
+  z-index: 1;
+}
+
+.portfolio-contact__social.first_social_item {
+      position: relative;
+    right: -6%;
+    border: solid 4px rgba(1, 63, 99, 1);
+}
+
+@media (min-width: 0) and (max-width: 767px) {
+  .portfolio-contact__content::before {
+    content: "";
+    display: none;
+  }
+
+  .portfolio-contact__social {
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .portfolio-contact__content::before {
     content: "";
     display: block;
-    width: 70%;
+    width: 90%;
     height: 4px;
     background-color: #ffffff;
     position: absolute;
     transform: rotateY(25deg);
-}
+    z-index: 1;
+  }
 
-.portfolio-contact__btn {
+  .portfolio-contact__social {
     background-color: #ffffff;
+    display: flex;
+    border-radius: 50%;
+    padding: 8px;
+    z-index: 2;
+  }
+
+  .portfolio-contact__social.first_social_item {
+    position: relative;
+  }
 }

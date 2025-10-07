@@ -12,19 +12,19 @@ import icon__education from '../../../assets/icons/icon--education.svg';
 
 export default function Contact() {
     return (
-        <section className="section is-fluid portfolio-contact">
+        <section className="section portfolio-contact">
             <div className="column">
                 <SectionTitle title="Get In Touch" />
             </div>
             <div className="column text-center">
-                <div className="row portfolio-contact__content d-flex align-items-center">
-                    <div className="column is-hidden-mobile">
-                        <div className="portfolio-contact__social">
+                <div className="columns is-align-items-center portfolio-contact__content">
+                    <div className="column is-hidden-mobile is-flex is-align-items-center">
+                        <div className="portfolio-contact__social first_social_item">
                             <img className="portfolio-contact__icon" src={icon__email} alt="Email Icon" />
                         </div>
                         <button className="portfolio-contact__btn btn my-5 px-2 py-2">Click Here To Contact Me</button>
                     </div>
-                    <div className="col-6">
+                    <div className="column is-flex is-justify-content-space-evenly is-align-items-center is-flex-wrap-wrap">
                         <div className="portfolio-contact__social is-hidden-tablet">
                             <img className="portfolio-contact__icon" src={icon__email} alt="Email Icon" />
                         </div>
