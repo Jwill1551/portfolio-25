@@ -1,0 +1,73 @@
+/// Returns a color (black or white) that has sufficient contrast
+/// with the given background color.
+/// @param {color} $background - background color
+/// @param {number} $threshold - lightness threshold (0–100)
+/// @return {color} - black or white for ADA contrast
+@function ada-contrast($background, $threshold: 60) {
+  @if (lightness($background) > $threshold) {
+    @return #000; // dark text for light background
+  } @else {
+    @return #fff; // light text for dark background
+  }
+}
+
+@mixin ada-text($background) {
+  background-color: $background;
+  color: ada-contrast($background);
+}
+
+/// --------------------------------------------------------
+/// WCAG contrast utilities
+/// --------------------------------------------------------
+
+// Calculate relative luminance of a color
+@function luminance($color) {
+  $rgb: ();
+  @each $channel in red($color), green($color), blue($color) {
+    $channel: $channel / 255;
+    $channel: if($channel < 0.03928, $channel / 12.92, pow(($channel + 0.055) / 1.055, 2.4));
+    $rgb: append($rgb, $channel);
+  }
+  @return nth($rgb, 1) * 0.2126 + nth($rgb, 2) * 0.7152 + nth($rgb, 3) * 0.0722;
+}
+
+// Calculate WCAG contrast ratio between two colors
+@function contrast-ratio($color1, $color2) {
+  $lum1: luminance($color1);
+  $lum2: luminance($color2);
+  $lighter: max($lum1, $lum2);
+  $darker: min($lum1, $lum2);
+  @return ($lighter + 0.05) / ($darker + 0.05);
+}
+
+/// --------------------------------------------------------
+/// Adjust color until it meets ADA contrast threshold
+/// --------------------------------------------------------
+/// @param {color} $primary - base color to adjust
+/// @param {color} $secondary - comparison/background color
+/// @param {number} $min-contrast - WCAG ratio (4.5 recommended)
+/// @return {color} - adjusted primary color
+@function ada-adjust($primary, $secondary, $min-contrast: 4.5) {
+  $ratio: contrast-ratio($primary, $secondary);
+  $step: 1%;
+  $new-color: $primary;
+
+  @if $ratio < $min-contrast {
+    // If primary is lighter than secondary, darken it; otherwise, lighten it
+    @if luminance($primary) > luminance($secondary) {
+      @while $ratio < $min-contrast and $step < 100 {
+        $new-color: darken($primary, $step);
+        $ratio: contrast-ratio($new-color, $secondary);
+        $step: $step + 1;
+      }
+    } @else {
+      @while $ratio < $min-contrast and $step < 100 {
+        $new-color: lighten($primary, $step);
+        $ratio: contrast-ratio($new-color, $secondary);
+        $step: $step + 1;
+      }
+    }
+  }
+
+  @return $new-color;
+}

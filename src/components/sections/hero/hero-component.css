@@ -30,3 +30,18 @@
     font-size: 20px;
     z-index: 1;
 }
+
+@media screen and (min-width: 0) and (max-width: 767px) {
+    .portfolio-hero::after {
+        content: "";
+        background: #00466E;
+        background: linear-gradient(180deg, rgba(0, 70, 110, 0.05) 0%, rgba(0, 70, 110, 0.6) 30%, rgba(0, 70, 110, 0.95) 60%, rgba(0, 70, 110, 1) 100%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 110px;
+    }
+
+}

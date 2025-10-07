@@ -1,10 +1,5 @@
-import './assets/styles/theme.css';
 import './App.css';
-import './assets/styles/style.css';
-
-/*** React Slick Slider CSS ***/
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import '../node_modules/jquery/dist/jquery.slim'
 
 /** Import Components **/
 import Header from './components/layout/header/header';

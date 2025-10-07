@@ -1,3 +1,27 @@
-.project-card .project-card__image {
-    min-height: 450px;
+.project-card .project-card__title {
+    background-color: #000000;
+}
+
+@media screen and (min-width: 0) and (max-width: 767px) {
+    .portfolio-projects .project__wrapper .slick-slide {
+        padding: 0 16px;
+    }
+}
+
+/* project-component.css */
+.portfolio-projects,
+.project__wrapper {
+  width: 100%;
+}
+
+.slick-slider,
+.slick-list,
+.slick-track {
+  width: 100%;
+}
+
+.slick-slide > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

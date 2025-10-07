@@ -1,9 +1,12 @@
-import React from 'react';
 import SectionTitle from '../../general/section_title';
 import ProjectCard from '../../general/project_card';
+import './project-component.css'
 
 /*** React Slick Slider & Carousel ***/
+import React from 'react';
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 /*** Project Images ***/
 import jigsaw_health from '../../../assets/images/jigsaw-health-overview.png';
@@ -14,19 +17,35 @@ import eclipse_overview from '../../../assets/images/eclipse-overview.png';
 import dhbc_overview from '../../../assets/images/dhbc-overview.png';
 
 export default function Projects() {
-    let settings = {
-        arrows: true,
-        dots: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
+    const settings = {
+    arrows: true,
+    dots: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+        {
+        breakpoint: 1024, // below 1024px
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            centerMode: true
+        }
+        },
+        {
+        breakpoint: 768, // below 768px (mobile)
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+        }
+    ]
     };
     return (
-        <section className="row portfolio-projects">
+        <section className="section is-fluid portfolio-projects">
             <SectionTitle title="Projects & Collaborations" />
-            <div className="col justify-content-center mb-4 py-15">
-                <div className="row justify-content-center project__wrapper">
-                    <div className="col-11 text-center">
+                <div className="project__wrapper w-100 py-sm-5 py-md-10 py-lg-15">
                         <Slider {...settings}>
                             <ProjectCard title={"Jigsaw Health"} 
                                             description={"Developed custom Shopify features and improved site performance for Jigsaw Health, a supplement brand known for its magnesium products. Worked on accessible UI components, optimized page loading, and refined product interactions to enhance user experience and conversions."} 
@@ -53,9 +72,7 @@ export default function Projects() {
                                             imageUrl={dhbc_overview} 
                                             projectUrl={"https://deserthillschurch.com/"} />
                         </Slider>
-                    </div>
                 </div>
-            </div>
         </section>
     );
 }

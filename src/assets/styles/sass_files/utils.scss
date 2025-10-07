@@ -1,11 +1,13 @@
 // Config
 $gutter: 8px;
 $util-size: 30; // how many steps (0 → 6 = 7 total values)
+// Bulma breakpoint variables
 $breakpoints: (
-  sm: 328px,
-  md: 728px,
-  lg: 1041px,
-  xl: 1200px
+  mobile:  0,
+  tablet:  769px,
+  desktop: 1024px,
+  widescreen: 1216px,
+  fullhd: 1408px
 );
 
 // --- Core generator ---
@@ -57,3 +59,62 @@ $breakpoints: (
   @include generate-spacing(m, margin);
   @include generate-spacing(p, padding);
 }
+
+// Bulma breakpoint map (based on official source)
+$breakpoints: (
+  mobile:  0,
+  tablet:  769px,
+  desktop: 1024px,
+  widescreen: 1216px,
+  fullhd: 1408px
+);
+
+/// Helper: get next breakpoint value
+@function next-breakpoint($breakpoint) {
+  $keys: map-keys($breakpoints);
+  $found: false;
+
+  @each $key in $keys {
+    @if $found {
+      @return map-get($breakpoints, $key);
+    }
+    @if $key == $breakpoint {
+      $found: true;
+    }
+  }
+
+  @return null; // if no next breakpoint (e.g., fullhd)
+}
+
+/// Media query helper for Bulma breakpoints
+/// Usage:
+///   @include respond-to(tablet, up) { ... }
+///   @include respond-to(tablet, down) { ... }
+@mixin respond-to($breakpoint, $direction: up) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value == null {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  } @else if $direction == up {
+    @media (min-width: $value) {
+      @content;
+    }
+  } @else if $direction == down {
+    $next: next-breakpoint($breakpoint);
+
+    @if $next {
+      @media (max-width: ($next - 1)) {
+        @content;
+      }
+    } @else {
+      // No upper limit (for fullhd and above)
+      @warn "No higher breakpoint after #{$breakpoint} — using infinite range.";
+      @media (max-width: 9999px) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Invalid direction: #{$direction}. Use 'up' or 'down'.";
+  }
+}
+
