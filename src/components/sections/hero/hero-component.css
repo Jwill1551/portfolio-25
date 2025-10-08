@@ -1,6 +1,8 @@
 .portfolio-hero {
     background: #00466E;
-    background: linear-gradient(0deg, rgba(0, 70, 110, 1) 0%, rgba(1, 63, 99, 1) 30%, rgba(0, 29, 45, 1) 100%);;
+    background: linear-gradient(0deg, rgba(0, 70, 110, 1) 0%, rgba(1, 63, 99, 1) 30%, rgba(0, 29, 45, 1) 100%);
+    position: relative; /* ensure pseudo-elements are positioned inside the section */
+    overflow: hidden; /* prevent sub-pixel gaps from showing adjacent backgrounds */
 }
 
 .portfolio-hero::after {
@@ -8,11 +10,13 @@
     background: #00466E;
     background: linear-gradient(180deg, rgba(0, 70, 110, 0.05) 0%, rgba(0, 70, 110, 0.6) 30%, rgba(0, 70, 110, 0.95) 60%, rgba(0, 70, 110, 1) 100%);
     position: absolute;
-    bottom: 0;
+    bottom: 0; /* align exactly with bottom to avoid fractional gaps */
     left: 0;
     right: 0;
     width: 100%;
-    height: 314px;
+    height: 200px;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .portfolio-hero .portfolio-hero__heading {
@@ -37,7 +41,7 @@
         background: #00466E;
         background: linear-gradient(180deg, rgba(0, 70, 110, 0.05) 0%, rgba(0, 70, 110, 0.6) 30%, rgba(0, 70, 110, 0.95) 60%, rgba(0, 70, 110, 1) 100%);
         position: absolute;
-        bottom: 35px;
+        bottom: 0;
         left: 0;
         right: 0;
         width: 100%;

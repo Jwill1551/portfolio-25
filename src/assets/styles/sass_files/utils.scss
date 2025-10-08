@@ -1,6 +1,5 @@
 // --- Settings ---
 $gutter: 8px; // base unit
-$util-size: 30;   // 0 to 6 = 7 values total
 
 // --- Breakpoints matching Bulma ---
 $breakpoints: (
@@ -11,90 +10,953 @@ $breakpoints: (
   xxl: 1408px     // fullhd
 );
 
-// --- Helper: Get next breakpoint's min-width ---
-@function next-breakpoint($breakpoint) {
-  $keys: map-keys($breakpoints);
-  $found: false;
+// Screen sizes
+$small: 0;
+$medium: 769;
+$large: 1024;
+$xlarge: 1216;
+$xxlarge: 1408;
 
-  @each $key in $keys {
-    @if $found {
-      @return map-get($breakpoints, $key);
-    }
-    @if $key == $breakpoint {
-      $found: true;
-    }
-  }
+// Custom breakpoints
+$mobile:"(max-width: #{$small}px)";
+$tablet_to_mobile: "(min-width: #{$small}px) and (max-width: #{$medium - 0.98}px)";
+$desktop_to_tablet:"(min-width: #{$medium}px) and (max-width: #{$large - 0.98}px)";
+$widescreen_to_desktop: "(min-width: #{$large}px) and (max-width: #{$xlarge - 0.98}px)";
+$fullhd_to_widescreen: "(min-width: #{xlarge}px) and (max-width: #{$xxlarge - 0.98}px)";
+$desktop: "(min-width: #{$large}px)";
+$widescreen: "(min-width: #{$xlarge}px)";
+$fullhd: "(min-width: #{xxlarge}px)";
+$desktop-large:"(min-width: 1440px)";
 
-  @return null; // if no next breakpoint (e.g., xxl)
+// Base & Spacer
+$gutter: 10px;
+$spacer: $gutter;
+
+$grid-breakpoints: (
+    // Extra small screen / phone
+    xs: 0,
+    // Small screen / phone
+    sm: 719px,
+    // Medium screen / tablet
+    md: 1024px,
+    // Large screen / desktop
+    lg: 1920px,
+    // Extra large screen / wide desktop
+    xl: 2550px
+);
+
+$container-max-widths: (
+    sm: 0,          // mobile
+    md: 769px,      // tablet
+    lg: 1024px,     // desktop
+    xl: 1216px,     // widescreen
+    xxl: 1408px     // fullhd
+);
+
+
+// Mixins
+@mixin media($breakpoint) {
+    @media #{$breakpoint} {
+        @content;
+    }
 }
 
-// --- Core generator ---
-@mixin generate-spacing($prefix, $property, $max: $util-size) {
-  @for $i from 0 through $max {
-    $val: $i * $gutter;
+// rem size calc
+@function rem($size) {
+    $remSize: math.div($size, 16);
+    @return #{$remSize};
+}
 
-    // No-breakpoint (base)
-    .#{$prefix}-#{$i} { #{$property}: $val !important; }
+// aspect ratio mixin
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    padding-top: ($height / $width) * 100%;
+}
 
-    .#{$prefix}t-#{$i} { #{$property}-top: $val !important; }
-    .#{$prefix}b-#{$i} { #{$property}-bottom: $val !important; }
-    .#{$prefix}l-#{$i} { #{$property}-left: $val !important; }
-    .#{$prefix}r-#{$i} { #{$property}-right: $val !important; }
+@mixin fluid-font($min-size, $mid-size, $max-size) {
+    $min-size: rem($min-size);
+    $mid-size: rem($mid-size);
+    $max-size: rem($max-size);
+    $eq1: calc($max-size - $mid-size);
+    $eq2: calc($mid-size - $min-size);
 
-    .#{$prefix}x-#{$i} {
-      #{$property}-left: $val !important;
-      #{$property}-right: $val !important;
-    }
-    .#{$prefix}y-#{$i} {
-      #{$property}-top: $val !important;
-      #{$property}-bottom: $val !important;
-    }
-
-    // Responsive classes
-    @each $breakpoint, $min in $breakpoints {
-      $max: next-breakpoint($breakpoint);
-
-      @if $max != null {
-        @media (min-width: $min) and (max-width: $max - 0.02px) {
-          .#{$prefix}-#{$breakpoint}-#{$i} { #{$property}: $val !important; }
-
-          .#{$prefix}t-#{$breakpoint}-#{$i} { #{$property}-top: $val !important; }
-          .#{$prefix}b-#{$breakpoint}-#{$i} { #{$property}-bottom: $val !important; }
-          .#{$prefix}l-#{$breakpoint}-#{$i} { #{$property}-left: $val !important; }
-          .#{$prefix}r-#{$breakpoint}-#{$i} { #{$property}-right: $val !important; }
-
-          .#{$prefix}x-#{$breakpoint}-#{$i} {
-            #{$property}-left: $val !important;
-            #{$property}-right: $val !important;
-          }
-
-          .#{$prefix}y-#{$breakpoint}-#{$i} {
-            #{$property}-top: $val !important;
-            #{$property}-bottom: $val !important;
-          }
+    font-size: #{$max-size}rem;
+    & {
+        @include media($desktop) {
+            font-size: #{$max-size}rem !important;
         }
-      } @else {
-        @media (min-width: $min) {
-          .#{$prefix}-#{$breakpoint}-#{$i} { #{$property}: $val !important; }
 
-          .#{$prefix}t-#{$breakpoint}-#{$i} { #{$property}-top: $val !important; }
-          .#{$prefix}b-#{$breakpoint}-#{$i} { #{$property}-bottom: $val !important; }
-          .#{$prefix}l-#{$breakpoint}-#{$i} { #{$property}-left: $val !important; }
-          .#{$prefix}r-#{$breakpoint}-#{$i} { #{$property}-right: $val !important; }
-
-          .#{$prefix}x-#{$breakpoint}-#{$i} {
-            #{$property}-left: $val !important;
-            #{$property}-right: $val !important;
-          }
-
-          .#{$prefix}y-#{$breakpoint}-#{$i} {
-            #{$property}-top: $val !important;
-            #{$property}-bottom: $val !important;
-          }
+        // Fluid scaling for tablets
+        @include media($deskto_to_tablet) {
+            font-size: calc(
+                #{$mid-size}rem + $eq1 * 16 *
+                    ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+            ) !important;
         }
-      }
+
+        @include media($tablet_to_mobile) {
+            font-size: calc(
+                #{$min-size}rem + $eq1 * 16 *
+                    ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+            ) !important;
+        }
+
+        @include media($mobile) {
+            font-size: #{$min-size}rem !important;
+        }
     }
-  }
+}
+
+@mixin fluid_padding_x($min-size, $mid-size, $max-size) {
+    & {
+        // Set max width and height for icons
+        // Adjust the size based on the number of buttons
+        // and the maximum size of the button
+        // This ensures that icons are responsive and fit well within the button
+        // The formula is: max-width = (max-size / btn_max) * btn_num
+        $min-size: rem($min-size);
+        $mid-size: rem($mid-size);
+        $max-size: rem($max-size);
+        $eq1: calc($max-size - $mid-size);
+        $eq2: calc($mid-size - $min-size);
+
+        padding-left: #{$max-size}rem;
+        padding-right: #{$max-size}rem;
+        & {
+            @include media($desktop) {
+                padding-left: #{$max-size}rem !important;
+                padding-right: #{$max-size}rem !important;
+            }
+
+            // Fluid scaling for tablets
+            @include media($deskto_to_tablet) {
+                padding-left: calc(
+                    #{$mid-size}rem + $eq1 * 16 *
+                        ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+                ) !important;
+                padding-right: calc(
+                    #{$mid-size}rem + $eq1 * 16 *
+                        ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+                ) !important;
+            }
+
+            @include media($tablet_to_mobile) {
+                padding-left: calc(
+                    #{$min-size}rem + $eq1 * 16 *
+                        ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+                ) !important;
+                padding-right: calc(
+                    #{$min-size}rem + $eq1 * 16 *
+                        ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+                ) !important;
+            }
+
+            @include media($mobile) {
+                padding-left: #{$min-size}rem !important;
+                padding-right: #{$min-size}rem !important;
+            }
+        }
+    }
+}
+
+@mixin fluid_padding_y($min-size, $mid-size, $max-size) {
+    & {
+        // Set max width and height for icons
+        // Adjust the size based on the number of buttons
+        // and the maximum size of the button
+        // This ensures that icons are responsive and fit well within the button
+        // The formula is: max-width = (max-size / btn_max) * btn_num
+        $min-size: rem($min-size);
+        $mid-size: rem($mid-size);
+        $max-size: rem($max-size);
+        $eq1: calc($max-size - $mid-size);
+        $eq2: calc($mid-size - $min-size);
+
+        padding-top: #{$max-size}rem;
+        padding-bottom: #{$max-size}rem;
+        & {
+            @include media($desktop) {
+                padding-top: #{$max-size}rem !important;
+                padding-bottom: #{$max-size}rem !important;
+            }
+
+            // Fluid scaling for tablets
+            @include media($deskto_to_tablet) {
+                padding-top: calc(
+                    #{$mid-size}rem + $eq1 * 16 *
+                        ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+                ) !important;
+                padding-bottom: calc(
+                    #{$mid-size}rem + $eq1 * 16 *
+                        ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+                ) !important;
+            }
+
+            @include media($tablet_to_mobile) {
+                padding-top: calc(
+                    #{$min-size}rem + $eq1 * 16 *
+                        ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+                ) !important;
+                padding-bottom: calc(
+                    #{$min-size}rem + $eq1 * 16 *
+                        ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+                ) !important;
+            }
+
+            @include media($mobile) {
+                padding-top: #{$min-size}rem !important;
+                padding-bottom: #{$min-size}rem !important;
+            }
+        }
+    }
+}
+
+@mixin fluid_margin_position($min-size, $mid-size, $max-size, $pos) {
+    & {
+        // Set max width and height for icons
+        // Adjust the size based on the number of buttons
+        // and the maximum size of the button
+        // This ensures that icons are responsive and fit well within the button
+        // The formula is: max-width = (max-size / btn_max) * btn_num
+        $min-size: rem($min-size);
+        $mid-size: rem($mid-size);
+        $max-size: rem($max-size);
+        $eq1: calc($max-size - $mid-size);
+        $eq2: calc($mid-size - $min-size);
+
+        margin-#{$pos}: #{$max-size}rem;
+
+        & {
+            @include media($desktop) {
+                margin-#{$pos}: #{$max-size}rem !important;
+            }
+
+            // Fluid scaling for tablets
+            @include media($deskto_to_tablet) {
+                margin-#{$pos}: calc(
+                    #{$mid-size}rem + $eq1 * 16 *
+                        ((100vw - #{$medium}px) / (#{$large} - #{$medium}))
+                ) !important;
+            }
+
+            @include media($tablet_to_mobile) {
+                margin-#{$pos}: calc(
+                    #{$min-size}rem + $eq1 * 16 *
+                        ((100vw - #{$small}px) / (#{$medium} - #{$small}))
+                ) !important;
+            }
+
+            @include media($mobile) {
+                margin-#{$pos}: #{$min-size}rem !important;
+            }
+        }
+    }
+}
+
+// Main mixin to generate button with hover effect
+@mixin generate_btn(
+    $color,
+    $background,
+    $border,
+    $hover,
+    $hover-background,
+    $hover-border
+) {
+    @include button(
+        $color,
+        $background,
+        $border,
+        $hover,
+        $hover-background,
+        $hover-border
+    );
+    @include button_hover($hover, $hover-background, $hover-border);
+}
+
+@function tracking($target) {
+    @return calc($target / 1000) * 1em;
+}
+
+@mixin tracking($target) {
+    & {
+        letter-spacing: tracking($target) !important;
+    }
+}
+
+@mixin fluid-tracking($min-size, $mid-size, $max-size) {
+    $min-size: rem($min-size);
+    $mid-size: rem($mid-size);
+    $max-size: rem($max-size);
+    $eq1: calc($max-size - $mid-size);
+    $eq2: calc($mid-size - $min-size);
+
+    letter-spacing: letter-spacing($max-size);
+    & {
+        @include media($desktop) {
+            letter-spacing: tracking($max-size);
+        }
+
+        // Fluid scaling for tablets
+        @include media($tablet_to_mobile) {
+            letter-spacing: tracking($mid-size);
+        }
+
+        @include media($mobile) {
+            letter-spacing: tracking($min-size);
+        }
+    }
+}
+
+// For small screens
+@mixin small-screen {
+    @media (max-width: #{$small}px) {
+        @content;
+    }
+}
+
+// For medium screens
+@mixin medium-screen {
+    @media (min-width: #{$small + 1}px) and (max-width: #{$medium}px) {
+        @content;
+    }
+}
+
+// For large screens
+@mixin large-screen {
+    @media (min-width: #{$medium}px) {
+        @content;
+    }
+}
+
+// Padding and Margin Mixin Classes
+@mixin generate_padding_classes($num) {
+    @for $i from 0 through $num {
+        @if $i == 0 {
+            &-auto {
+                padding: auto !important;
+            }
+        }
+
+        &-#{$i} {
+            padding: $spacer * 0.8* $i;
+        }
+
+        &t-#{$i} {
+            padding-top: $spacer * 0.8* $i;
+        }
+
+        &r-#{$i} {
+            padding-right: $spacer * 0.8* $i;
+        }
+
+        &b-#{$i} {
+            padding-bottom: $spacer * 0.8* $i;
+        }
+
+        &l-#{$i} {
+            padding-left: $spacer * 0.8* $i;
+        }
+
+        &x-#{$i} {
+            padding-left: $spacer * 0.8* $i;
+            padding-right: $spacer * 0.8* $i;
+        }
+
+        &y-#{$i} {
+            padding-top: $spacer * 0.8* $i;
+            padding-bottom: $spacer * 0.8* $i;
+        }
+
+        &t {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-left: auto !important;
+                            padding-right: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &y {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-top: auto !important;
+                            padding-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-sm {
+            @include small-screen {
+                &-#{$i} {
+                    padding: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        padding: auto !important;
+                    }
+                }
+            }
+        }
+
+        &t {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-left: auto !important;
+                            padding-right: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &y {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-top: auto !important;
+                            padding-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-md {
+            @include medium-screen {
+                &-#{$i} {
+                    padding: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        padding: auto !important;
+                    }
+                }
+            }
+        }
+
+        &t {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-left: $spacer * 0.8* $i !important;
+                        padding-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-left: auto !important;
+                            padding-right: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &y {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        padding-top: $spacer * 0.8* $i !important;
+                        padding-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            padding-top: auto !important;
+                            padding-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-lg {
+            @include large-screen {
+                &-#{$i} {
+                    padding: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        padding: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin generate_margin_classes($num) {
+    @for $i from 0 through $num {
+        @if $i == 0 {
+            &-auto {
+                margin: auto !important;
+            }
+        }
+
+        &-#{$i} {
+            margin: $spacer * 0.8* $i;
+        }
+
+        &t-#{$i} {
+            margin-top: $spacer * 0.8* $i;
+        }
+
+        &r-#{$i} {
+            margin-right: $spacer * 0.8* $i;
+        }
+
+        &b-#{$i} {
+            margin-bottom: $spacer * 0.8* $i;
+        }
+
+        &l-#{$i} {
+            margin-left: $spacer * 0.8* $i;
+        }
+
+        &x-#{$i} {
+            margin-left: $spacer * 0.8* $i;
+            margin-right: $spacer * 0.8* $i;
+        }
+
+        &x-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &y-#{$i} {
+            margin-top: $spacer * 0.8* $i;
+            margin-bottom: $spacer * 0.8* $i;
+        }
+
+        &y-auto {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        &t {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-left: auto !important;
+                            margin-right: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &y {
+            &-sm {
+                @include small-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-top: auto !important;
+                            margin-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-sm {
+            @include small-screen {
+                &-#{$i} {
+                    margin: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        margin: auto !important;
+                    }
+                }
+            }
+        }
+
+        &t {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-left: auto !important;
+                            margin-right: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &y {
+            &-md {
+                @include medium-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-top: auto !important;
+                            margin-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-md {
+            @include medium-screen {
+                &-#{$i} {
+                    margin: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        margin: 0 auto !important;
+                    }
+                }
+            }
+        }
+
+        &t {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &r {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &b {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &l {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                    }
+                }
+            }
+        }
+
+        &x {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-left: $spacer * 0.8* $i !important;
+                        margin-right: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-left: auto !important;
+                            margin-right: auto !important;
+                        }
+                    }   
+                }
+            }
+        }
+
+        &y {
+            &-lg {
+                @include large-screen {
+                    &-#{$i} {
+                        margin-top: $spacer * 0.8* $i !important;
+                        margin-bottom: $spacer * 0.8* $i !important;
+                    }
+
+                    @if $i == 0 {
+                        &-auto {
+                            margin-top: auto !important;
+                            margin-bottom: auto !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-lg {
+            @include large-screen {
+                &-#{$i} {
+                    margin: $spacer * 0.8* $i !important;
+                }
+
+                @if $i == 0 {
+                    &-auto {
+                        margin: 0 auto !important;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /// Media query helper for Bulma breakpoints

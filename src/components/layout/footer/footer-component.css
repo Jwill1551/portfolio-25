@@ -1,3 +1,8 @@
 .portfolio-footer {
-    background-color: #001D2D;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 70, 110, 1) 0%,
+        rgba(1, 63, 99, 1) 35%,
+        rgba(0, 29, 45, 1) 100%
+    );
 }

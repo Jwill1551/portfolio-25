@@ -1,20 +1,28 @@
-@use '../../../node_modules/bulma/bulma.scss';
-@use './sass_files/utils.scss';
-@use './sass_files/typography.scss';
-@use './sass_files/ada_compliance.scss';
+@import '../../../node_modules/bulma/bulma.scss';
+@import './sass_files/utils.scss';
+@import './sass_files/typography.scss';
+@import './sass_files/ada_compliance.scss';
 
 
 /*** Padding and Margin Classes ***/
 // --- Responsive wrapper ---
-@mixin spacing-utilities {
-  @include generate-spacing(m, margin);
-  @include generate-spacing(p, padding);
-}
+// === Generate classes ===
+// Padding and Margin classes, with responsive options
 
+/*** Padding classes for small, medium, and large screens ***/
+.p { @include generate_padding_classes(40); }
+
+/*** Margin classes for small, medium, and large screens ***/
+.m { @include generate_margin_classes(40); }
+
+html {
+    scroll-behavior: smooth;
+}
 
 /*** Global & Default Styles ***/
 section {
     position: relative;
+    margin-bottom: -1px !important;
 }
 
 .portfolio-projects, 

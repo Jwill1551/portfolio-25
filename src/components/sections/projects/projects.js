@@ -8,6 +8,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+/*** Import React Icons ***/
+import { IconContext } from "react-icons";
+import { FaSass } from "react-icons/fa";
+import { FaJsSquare } from "react-icons/fa";
+import { FaShopify } from "react-icons/fa";
+import { TiHtml5 } from "react-icons/ti";
+import { FaBootstrap } from "react-icons/fa";
+import { GrWordpress } from "react-icons/gr";
+import { FaArrowRight } from "react-icons/fa";
+
+
 /*** Project Images ***/
 import jigsaw_health from '../../../assets/images/jigsaw-health-overview.png';
 import orchard_overview from '../../../assets/images/jigsaw-orchard-overview.png';
@@ -42,9 +53,9 @@ export default function Projects() {
     ]
     };
     return (
-        <section className="section portfolio-projects">
+        <section id="projects" className="section portfolio-projects">
             <SectionTitle title="Projects & Collaborations" />
-                <div className="project__wrapper w-100 py-sm-5 py-md-10 py-lg-15">
+                <div className="project__wrapper w-100 py-sm-6 py-md-8 py-lg-10">
                         <Slider {...settings}>
                             <ProjectCard title={"Jigsaw Health"} 
                                             description={"Developed custom Shopify features and improved site performance for Jigsaw Health, a supplement brand known for its magnesium products. Worked on accessible UI components, optimized page loading, and refined product interactions to enhance user experience and conversions."} 
@@ -71,6 +82,20 @@ export default function Projects() {
                                             imageUrl={dhbc_overview} 
                                             projectUrl={"https://deserthillschurch.com/"} />
                         </Slider>
+                </div>
+                <div className='portfolio-projects__cta'>
+                    <a href="#" className='btn btn--transparent-blue p-3'>View more projects</a>
+                </div>
+                <div className='columns multiline is-flex is-justify-content-space-evenly portfolio-projects__technologies mt-7'>
+                    <div data-aos="fade-right" className='project_icon__title has-text-white title mb-0 is-flex is-align-items-center'><h3>Technologies Used <FaArrowRight /></h3></div>
+                    <IconContext.Provider value={{ color: "white", className: "pro-technologies", size: "4em",}}>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaJsSquare /></div>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaSass /></div>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><TiHtml5 /></div>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaBootstrap /></div>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaShopify /></div>
+                    <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><GrWordpress /></div>
+                    </IconContext.Provider>
                 </div>
         </section>
     );

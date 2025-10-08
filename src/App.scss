@@ -1,5 +1,9 @@
 @import './assets/styles/theme.scss';
 
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
   text-align: center;
 }

@@ -1,5 +1,6 @@
 .portfolio-skills .skill-console {
     border: solid 4px #47DBFF;
+    background: #47DBFF;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -10,12 +11,16 @@
 
 .portfolio-skills .skill-console .skill-bar__content {
     border: solid 4px #47DBFF;
-    border-radius: 25px;
+    border-radius: 10px;
+    position: relative;
+    background-color: #28525d;
 }
 
 .portfolio-skills .skill-console .skill-bar__skill-title,
 .portfolio-skills .skill-console .skill-bar__skill-level {
-    color: #47DBFF;
+    color: #001D2D;
+    font-weight: 600;
+    z-index: 1;
 }
 
 .skill-console .skill-console__content {
@@ -39,4 +44,16 @@
     display: block;
     border-radius: 25px;
     margin: 8px;
+}
+
+.skill-console .skill-bar__progress {
+    background-color: #47DBFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    width: 0;
+    transition: width 1s ease-out;
 }

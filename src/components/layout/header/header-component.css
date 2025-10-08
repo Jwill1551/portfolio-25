@@ -8,6 +8,18 @@
 
 .portfolio-header .portfolio-header__nav-list li a {
     text-decoration: none;
+    padding: 10px;
+    transition: outline 0.1s ease-in-out;
+}
+
+.portfolio-header .portfolio-header__nav-list li a:focus {
+    color: #47DBFF !important;
+}
+
+.portfolio-header .nav-list__item a:hover,
+.portfolio-header .nav-list__item a:focus-visible {
+    color: #47DBFF !important;
+    outline: solid 3px #47DBFF;
 }
 
 @media screen and (min-width: 768px) {

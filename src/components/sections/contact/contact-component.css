@@ -1,11 +1,7 @@
 .portfolio-contact {
   background: #00466e;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 70, 110, 1) 0%,
-    rgba(1, 63, 99, 1) 35%,
-    rgba(0, 29, 45, 1) 100%
-  );
+  position: relative;
+  overflow: hidden;
 }
 
 .portfolio-contact__content .portfolio-contact__icon {
@@ -20,7 +16,6 @@
   background-color: #ffffff;
   position: absolute;
   transform: rotateY(25deg);
-  z-index: 1;
 }
 
 .portfolio-contact__social {
@@ -34,7 +29,7 @@
 .portfolio-contact__btn {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 75%;
+  width: 55%;
   color: black;
   z-index: 1;
 }

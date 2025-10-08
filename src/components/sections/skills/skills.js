@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './skills-component.css';
 import SectionTitle from '../../general/section_title';
 import SkillBar from '../../general/skill_bar';
@@ -32,14 +32,50 @@ export default function Skills() {
         }
     ]
     };
+
+    useEffect(() => {
+  const bars = document.querySelectorAll('.skill-bar');
+
+  // Store observers to clean up later
+  const observers = [];
+
+  bars.forEach(bar => {
+    const progress = bar.querySelector('.skill-bar__progress');
+    const levelText = bar.querySelector('.skill-bar__skill-level')?.textContent;
+    if (!progress || !levelText) return;
+
+    const [current, max] = levelText.split('/').map(n => parseFloat(n.trim()));
+    const percentage = Math.min((current / max) * 100, 100);
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        progress.style.width = `${percentage}%`;
+      } else {
+        progress.style.width = `0%`;
+      }
+    }, { threshold: 0.5 });
+
+    observer.observe(bar);
+    observers.push({ observer, bar });
+  });
+
+  return () => {
+    // Cleanup observers on unmount
+    observers.forEach(({ observer, bar }) => {
+      observer.unobserve(bar);
+      observer.disconnect();
+    });
+  };
+}, []);
+
     return (
-        <section className="section portfolio-skills">
+        <section id="skills" className="section portfolio-skills">
             <div className="column is-full">
                 <SectionTitle title="Skills & Technologies" />
             </div>
             
-            <div class="columns is-multiline portfolio-skills__wrapper--desktop is-hidden-touch">
-                <div className="column is-half">
+            <div class="columns is-flex is-justify-content-center is-multiline portfolio-skills__wrapper--desktop is-hidden-touch pt-lg-10">
+                <div className="column is-two-fifths">
                     <SkillConsole title={"Frontend Development"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -48,7 +84,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column is-half">
+                <div className="column is-two-fifths">
                     <SkillConsole title={"Backend Development"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -57,7 +93,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column is-half">
+                <div className="column is-two-fifths">
                     <SkillConsole title={"Programming Languages"} 
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
@@ -66,7 +102,7 @@ export default function Skills() {
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
                                 type={"progress"} />
                 </div>
-                <div className="column is-half">
+                <div className="column is-two-fifths">
                     <SkillConsole title={"Tools & Platforms"}
                                 skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
                                         <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
