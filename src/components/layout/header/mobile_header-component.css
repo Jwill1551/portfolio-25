@@ -74,8 +74,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 19vh;
-  background: rgba(0, 29, 45, 1);
+  height: 30vh;
+  background: #001D2D;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   display: flex;

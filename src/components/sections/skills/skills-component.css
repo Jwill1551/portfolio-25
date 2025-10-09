@@ -7,18 +7,30 @@
 
 .portfolio-skills .skill-console .skill-console__title {
     background-color: #47DBFF;
+    font-weight: 600;
 }
 
 .portfolio-skills .skill-console .skill-bar__content {
     border: solid 4px #47DBFF;
     border-radius: 10px;
     position: relative;
-    background-color: #28525d;
 }
 
-.portfolio-skills .skill-console .skill-bar__skill-title,
+/*.portfolio-skills .skill-bar__progress.max_progress ~ .skill-bar__skill-level {
+    color: #001D2D !important;
+    font-weight: 600;
+    z-index: 1;
+}*/
+
+.portfolio-skills .skill-console .skill-bar__skill-title {
+    color: #47DBFF;
+    font-weight: 600;
+    z-index: 1;
+}
+
+
 .portfolio-skills .skill-console .skill-bar__skill-level {
-    color: #001D2D;
+    color: #47DBFF;
     font-weight: 600;
     z-index: 1;
 }
@@ -47,7 +59,7 @@
 }
 
 .skill-console .skill-bar__progress {
-    background-color: #47DBFF;
+    background-color: #47dbff52;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -57,3 +69,4 @@
     width: 0;
     transition: width 1s ease-out;
 }
+

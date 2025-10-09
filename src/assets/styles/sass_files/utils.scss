@@ -11,21 +11,14 @@ $breakpoints: (
 );
 
 // Screen sizes
-$small: 0;
-$medium: 769;
-$large: 1024;
-$xlarge: 1216;
-$xxlarge: 1408;
+$small: 769;
+$medium: 1024;
+$large: 1216;
 
 // Custom breakpoints
 $mobile:"(max-width: #{$small}px)";
 $tablet_to_mobile: "(min-width: #{$small}px) and (max-width: #{$medium - 0.98}px)";
 $desktop_to_tablet:"(min-width: #{$medium}px) and (max-width: #{$large - 0.98}px)";
-$widescreen_to_desktop: "(min-width: #{$large}px) and (max-width: #{$xlarge - 0.98}px)";
-$fullhd_to_widescreen: "(min-width: #{xlarge}px) and (max-width: #{$xxlarge - 0.98}px)";
-$desktop: "(min-width: #{$large}px)";
-$widescreen: "(min-width: #{$xlarge}px)";
-$fullhd: "(min-width: #{xxlarge}px)";
 $desktop-large:"(min-width: 1440px)";
 
 // Base & Spacer

@@ -38,7 +38,7 @@ export default function Projects() {
         {
         breakpoint: 1024, // below 1024px
         settings: {
-            slidesToShow: 2,
+            slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true
         }
@@ -47,15 +47,18 @@ export default function Projects() {
         breakpoint: 768, // below 768px (mobile)
         settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            adaptiveHeight: true
         }
         }
     ]
     };
     return (
         <section id="projects" className="section portfolio-projects">
-            <SectionTitle title="Projects & Collaborations" />
-                <div className="project__wrapper w-100 py-sm-6 py-md-8 py-lg-10">
+                <div className='columns'>
+                    <SectionTitle title="Projects & Collaborations" />
+                </div>
+                <div className="column project__wrapper w-100 py-sm-6 py-md-8 py-lg-10">
                         <Slider {...settings}>
                             <ProjectCard title={"Jigsaw Health"} 
                                             description={"Developed custom Shopify features and improved site performance for Jigsaw Health, a supplement brand known for its magnesium products. Worked on accessible UI components, optimized page loading, and refined product interactions to enhance user experience and conversions."} 
@@ -83,11 +86,11 @@ export default function Projects() {
                                             projectUrl={"https://deserthillschurch.com/"} />
                         </Slider>
                 </div>
-                <div className='portfolio-projects__cta'>
-                    <a href="#" className='btn btn--transparent-blue p-3'>View more projects</a>
+                <div className='column portfolio-projects__cta mt-sm-2'>
+                    <a href="https://github.com/Jwill1551" className='btn btn--transparent-blue p-3'>View more projects</a>
                 </div>
-                <div className='columns multiline is-flex is-justify-content-space-evenly portfolio-projects__technologies mt-7'>
-                    <div data-aos="fade-right" className='project_icon__title has-text-white title mb-0 is-flex is-align-items-center'><h3>Technologies Used <FaArrowRight /></h3></div>
+                <div className='columns is-multiline is-flex is-justify-content-space-evenly portfolio-projects__technologies mt-7'>
+                    <div data-aos="fade-right" className='column mb-sm-3 mb-lg-0 is-full-touch is-one-third-desktop is-flex-touch is-justify-content-center project_icon__title has-text-white title is-flex is-align-items-center'><h3 className='mb-lg-1 mr-lg-2'>Technologies Used</h3><span className='is-hidden-touch'><FaArrowRight /></span></div>
                     <IconContext.Provider value={{ color: "white", className: "pro-technologies", size: "4em",}}>
                     <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaJsSquare /></div>
                     <div data-aos="flip-right" className='column is-narrow project_icon__wrapper'><FaSass /></div>

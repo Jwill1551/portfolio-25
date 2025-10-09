@@ -24,12 +24,17 @@
   border-radius: 50%;
   padding: 8px;
   z-index: 2;
+  transition: transform 0.2s ease-in-out,  box-shadow 0.2s ease-in-out;
+}
+
+.portfolio-contact__social svg {
+  transition: color 0.2s ease-in-out;
 }
 
 .portfolio-contact__btn {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 55%;
+  width: 64%;
   color: black;
   z-index: 1;
 }
@@ -78,4 +83,82 @@
   .portfolio-contact__social.first_social_item {
     position: relative;
   }
+
+  .portfolio-contact__btn {
+    width: 75% !important;
+  }
 }
+
+.portfolio-contact__social:not(.first_social_item):hover,
+.portfolio-contact__social.first_social_item:has(+ .portfolio-contact__btn:hover) {
+  box-shadow: 0px 0px 5px 4px #47DBFF;
+  transform: scale(1.2);
+}
+
+.portfolio-contact__social:not(.first_social_item):hover svg {
+  color: #00466e !important;
+}
+    
+.portfolio-contact__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.portfolio-contact__btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 10px;
+  background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+  animation: neonSweep 2s linear infinite;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portfolio-contact__btn:hover::before {
+  opacity: 1;
+}
+
+.portfolio-contact__btn:hover {
+  box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+@keyframes neonSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.portfolio-contact__btn:hover .btn__text {
+  z-index: 3;
+  color: #00466e;
+}
+
+@media screen and (min-width: 0) and (max-width: 767px) {
+  .portfolio-contact .social_icon_wrapper {
+    justify-content: center !important;
+  }
+}
+
+

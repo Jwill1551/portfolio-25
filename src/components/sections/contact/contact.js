@@ -14,7 +14,7 @@ import { PiDevToLogo } from "react-icons/pi";
 export default function Contact() {
     return (
         <section id="contact" className="section portfolio-contact">
-            <div className="column">
+            <div className="columns">
                 <SectionTitle title="Get In Touch" />
             </div>
             <div className="column text-center">
@@ -24,24 +24,26 @@ export default function Contact() {
                         <div className="portfolio-contact__social first_social_item">
                             <MdAlternateEmail />
                         </div>
-                        <button className="portfolio-contact__btn btn my-5 px-2 py-4">Click Here To Contact Me</button>
+                        <a href="mailto:d.willjoshua@gmail.com" className="portfolio-contact__btn btn my-5 px-2 py-4">
+                            <span className='btn__text'>Click Here To Contact Me</span>
+                        </a>
                     </div>
-                    <div className="column is-flex is-justify-content-space-evenly is-align-items-center is-flex-wrap-wrap">
-                            <div className="portfolio-contact__social is-hidden-tablet">
+                    <div className="social_icon_wrapper column is-flex is-justify-content-space-evenly is-align-items-center is-flex-wrap-wrap">
+                            <a href="mailto:d.willjoshua@gmail.com" className="portfolio-contact__social is-hidden-tablet">
                                 <MdAlternateEmail />
-                            </div>
-                            <div className="portfolio-contact__social">
+                            </a>
+                            <a href="https://github.com/Jwill1551" className="portfolio-contact__social">
                                 <FaGithub />
-                            </div>
-                            <div className="portfolio-contact__social">
+                            </a>
+                            <a href="https://www.linkedin.com/in/joshua-williams-933498184" className="portfolio-contact__social">
                                 <TiSocialLinkedinCircular />
-                            </div>
-                            <div className="portfolio-contact__social">
+                            </a>
+                            <a href="https://gcu-csm.symplicity.com/students/app/profile" className="portfolio-contact__social">
                                 <IoSchool />
-                            </div>
-                            <div className="portfolio-contact__social">
+                            </a>
+                            <a href="https://dev.to/jwill1551" className="portfolio-contact__social">
                                 <PiDevToLogo />
-                            </div>
+                            </a>
                     </div>
                   </IconContext.Provider>
                 </div>

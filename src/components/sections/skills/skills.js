@@ -50,6 +50,10 @@ export default function Skills() {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         progress.style.width = `${percentage}%`;
+
+        if(percentage === 100) {
+            progress.classList.add("max_progress");
+        }
       } else {
         progress.style.width = `0%`;
       }
@@ -70,7 +74,7 @@ export default function Skills() {
 
     return (
         <section id="skills" className="section portfolio-skills">
-            <div className="column is-full">
+            <div className="columns">
                 <SectionTitle title="Skills & Technologies" />
             </div>
             
