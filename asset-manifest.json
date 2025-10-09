@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Jwill1551/portfolio-25/static/css/main.736b8415.css",
+    "main.js": "/Jwill1551/portfolio-25/static/js/main.fbe0b458.js",
+    "static/js/453.3dacb4a2.chunk.js": "/Jwill1551/portfolio-25/static/js/453.3dacb4a2.chunk.js",
+    "static/media/eclipse-overview.png": "/Jwill1551/portfolio-25/static/media/eclipse-overview.4fbc58e25f6be8c3e163.png",
+    "static/media/saturday-dog-club-overview.png": "/Jwill1551/portfolio-25/static/media/saturday-dog-club-overview.e3db06e6ede90a3831d6.png",
+    "static/media/Me-Gray-Suit.png": "/Jwill1551/portfolio-25/static/media/Me-Gray-Suit.1d33739dd8af4908b645.png",
+    "static/media/dhbc-overview.png": "/Jwill1551/portfolio-25/static/media/dhbc-overview.fdd3a34cd60d13c83a2d.png",
+    "static/media/oxbow-overview.png": "/Jwill1551/portfolio-25/static/media/oxbow-overview.a49a506dc816379cf28b.png",
+    "static/media/jigsaw-health-overview.png": "/Jwill1551/portfolio-25/static/media/jigsaw-health-overview.7868a9b2cb199e90bd3b.png",
+    "static/media/jigsaw-orchard-overview.png": "/Jwill1551/portfolio-25/static/media/jigsaw-orchard-overview.b93c49142402f737fd79.png",
+    "static/media/slick.svg": "/Jwill1551/portfolio-25/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/Jwill1551/portfolio-25/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Jwill1551/portfolio-25/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Jwill1551/portfolio-25/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Jwill1551/portfolio-25/index.html",
+    "main.736b8415.css.map": "/Jwill1551/portfolio-25/static/css/main.736b8415.css.map",
+    "main.fbe0b458.js.map": "/Jwill1551/portfolio-25/static/js/main.fbe0b458.js.map",
+    "453.3dacb4a2.chunk.js.map": "/Jwill1551/portfolio-25/static/js/453.3dacb4a2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.736b8415.css",
+    "static/js/main.fbe0b458.js"
+  ]
+}
