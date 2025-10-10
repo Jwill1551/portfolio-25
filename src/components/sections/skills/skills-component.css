@@ -90,8 +90,6 @@
   z-index: 5;
 }
 
-.portfolio-skills .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
-  & .swiper-pagination-bullet {
-    background-color: white;
-  }
+.portfolio-skills .swiper-pagination-bullet { 
+    background: white;
 }

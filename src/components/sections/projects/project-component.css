@@ -9,7 +9,7 @@
 }
 
 .project-card__image {
-  max-height: 185px;
+  max-height: 200px;
   height: 100%;
   width: 100%;
 }
@@ -80,8 +80,6 @@
   z-index: 5;
 }
 
-.portfolio-projects .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
-  & .swiper-pagination-bullet {
-    background-color: white;
-  }
+.portfolio-projects .swiper-pagination-bullet {
+    background: white;
 }

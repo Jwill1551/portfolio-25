@@ -45,6 +45,7 @@
     position: relative;
     right: -6%;
     border: solid 4px #00466e;
+    margin-left: -5px;
 }
 
 @media (min-width: 0) and (max-width: 767px) {

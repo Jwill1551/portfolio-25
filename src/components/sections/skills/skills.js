@@ -110,19 +110,27 @@ export default function Skills() {
           modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
-            navigation={{  }}
+            navigation
+            autoplay={{ delay: 2000, disableOnInteraction: true }}
+            speed={1000}
             pagination={{ clickable: true }}
             breakpoints={{
                 0: {
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 480: {
                     slidesPerView: 1,
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 768: {
                     slidesPerView: 2,
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 }
             }}
 

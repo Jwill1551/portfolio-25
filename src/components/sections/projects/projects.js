@@ -36,23 +36,33 @@ export default function Projects() {
            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
-            navigation={{  }}
+            autoplay={{ delay: 2000, disableOnInteraction: true }}
+            speed={1000}
+            navigation
             pagination={{ clickable: true }}
             breakpoints={{
                 0: {
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 480: {
                     slidesPerView: 1,
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 768: {
                     slidesPerView: 2,
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 1220: {
                     slidesPerView: 3,
-                    navigation: false
+                    navigation: false,
+                    autoplay: { delay: 2000, disableOnInteraction: true },
+                    speed: 1000,
                 },
                 1450: {
                     slidesPerView: 4,
@@ -60,7 +70,8 @@ export default function Projects() {
                 },
                 1990: {
                     slidesPerView: 5,
-                    navigation: false
+                    navigation: false,
+                    autoplay: false
                 }
             }}
         >

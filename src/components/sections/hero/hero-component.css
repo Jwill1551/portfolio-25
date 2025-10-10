@@ -48,6 +48,15 @@
         height: 200px;
     }
 
+    .portfolio-hero__image {
+        width: 80% !important;
+    }
+}
+
+@media screen and (min-width: 767.50px) and (max-width: 1200.50px) {
+    .portfolio-hero__image {
+        width: 70% !important;
+    }
 }
 
 /*** Image Popup Effect ***/
@@ -63,3 +72,6 @@
   transform: scale(1) translateY(0);
 }
 
+.portfolio-hero__image {
+    width: 60%;
+}
