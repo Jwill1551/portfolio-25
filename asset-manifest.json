@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.e62ae6e4.css",
-    "main.js": "/static/js/main.7627589c.js",
-    "static/js/453.3dacb4a2.chunk.js": "/static/js/453.3dacb4a2.chunk.js",
-    "static/media/eclipse-overview.png": "/static/media/eclipse-overview.4fbc58e25f6be8c3e163.png",
-    "static/media/saturday-dog-club-overview.png": "/static/media/saturday-dog-club-overview.e3db06e6ede90a3831d6.png",
-    "static/media/Me-Gray-Suit.png": "/static/media/Me-Gray-Suit.1d33739dd8af4908b645.png",
-    "static/media/dhbc-overview.png": "/static/media/dhbc-overview.fdd3a34cd60d13c83a2d.png",
-    "static/media/oxbow-overview.png": "/static/media/oxbow-overview.a49a506dc816379cf28b.png",
-    "static/media/jigsaw-health-overview.png": "/static/media/jigsaw-health-overview.7868a9b2cb199e90bd3b.png",
-    "static/media/jigsaw-orchard-overview.png": "/static/media/jigsaw-orchard-overview.b93c49142402f737fd79.png",
-    "static/media/my-resume.pdf": "/static/media/my-resume.c94717914f4a6d8e8ebf.pdf",
-    "index.html": "/index.html",
-    "main.e62ae6e4.css.map": "/static/css/main.e62ae6e4.css.map",
-    "main.7627589c.js.map": "/static/js/main.7627589c.js.map",
-    "453.3dacb4a2.chunk.js.map": "/static/js/453.3dacb4a2.chunk.js.map"
+    "main.css": "/portfolio-25/static/css/main.e62ae6e4.css",
+    "main.js": "/portfolio-25/static/js/main.573579a3.js",
+    "static/js/453.3dacb4a2.chunk.js": "/portfolio-25/static/js/453.3dacb4a2.chunk.js",
+    "static/media/eclipse-overview.png": "/portfolio-25/static/media/eclipse-overview.4fbc58e25f6be8c3e163.png",
+    "static/media/saturday-dog-club-overview.png": "/portfolio-25/static/media/saturday-dog-club-overview.e3db06e6ede90a3831d6.png",
+    "static/media/Me-Gray-Suit.png": "/portfolio-25/static/media/Me-Gray-Suit.1d33739dd8af4908b645.png",
+    "static/media/dhbc-overview.png": "/portfolio-25/static/media/dhbc-overview.fdd3a34cd60d13c83a2d.png",
+    "static/media/oxbow-overview.png": "/portfolio-25/static/media/oxbow-overview.a49a506dc816379cf28b.png",
+    "static/media/jigsaw-health-overview.png": "/portfolio-25/static/media/jigsaw-health-overview.7868a9b2cb199e90bd3b.png",
+    "static/media/jigsaw-orchard-overview.png": "/portfolio-25/static/media/jigsaw-orchard-overview.b93c49142402f737fd79.png",
+    "static/media/my-resume.pdf": "/portfolio-25/static/media/my-resume.c94717914f4a6d8e8ebf.pdf",
+    "index.html": "/portfolio-25/index.html",
+    "main.e62ae6e4.css.map": "/portfolio-25/static/css/main.e62ae6e4.css.map",
+    "main.573579a3.js.map": "/portfolio-25/static/js/main.573579a3.js.map",
+    "453.3dacb4a2.chunk.js.map": "/portfolio-25/static/js/453.3dacb4a2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e62ae6e4.css",
-    "static/js/main.7627589c.js"
+    "static/js/main.573579a3.js"
   ]
 }
