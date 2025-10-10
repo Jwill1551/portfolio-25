@@ -4,158 +4,182 @@ import SectionTitle from '../../general/section_title';
 import SkillBar from '../../general/skill_bar';
 import SkillConsole from '../../general/skill_console';
 
-/*** Skill Slider ***/
-import Slider from 'react-slick';
+/*** Swiper Carousel ***/
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export default function Skills() {
-    const mobileSettings = {
-    arrows: true,
-    dots: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-        {
-        breakpoint: 1024, // below 1024px
-        settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            infinite: true
+  /*** Animate Skill Bars ***/
+  useEffect(() => {
+    const bars = document.querySelectorAll('.skill-bar');
+    const observers = [];
+
+    bars.forEach(bar => {
+      const progress = bar.querySelector('.skill-bar__progress');
+      const levelText = bar.querySelector('.skill-bar__skill-level')?.textContent;
+      if (!progress || !levelText) return;
+
+      const [current, max] = levelText.split('/').map(n => parseFloat(n.trim()));
+      const percentage = Math.min((current / max) * 100, 100);
+
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          progress.style.width = `${percentage}%`;
+          if (percentage === 100) progress.classList.add('max_progress');
+        } else {
+          progress.style.width = `0%`;
         }
-        },
-        {
-        breakpoint: 768, // below 768px (mobile)
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-        }
-        }
-    ]
-    };
+      }, { threshold: 0.5 });
 
-    useEffect(() => {
-  const bars = document.querySelectorAll('.skill-bar');
-
-  // Store observers to clean up later
-  const observers = [];
-
-  bars.forEach(bar => {
-    const progress = bar.querySelector('.skill-bar__progress');
-    const levelText = bar.querySelector('.skill-bar__skill-level')?.textContent;
-    if (!progress || !levelText) return;
-
-    const [current, max] = levelText.split('/').map(n => parseFloat(n.trim()));
-    const percentage = Math.min((current / max) * 100, 100);
-
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        progress.style.width = `${percentage}%`;
-
-        if(percentage === 100) {
-            progress.classList.add("max_progress");
-        }
-      } else {
-        progress.style.width = `0%`;
-      }
-    }, { threshold: 0.5 });
-
-    observer.observe(bar);
-    observers.push({ observer, bar });
-  });
-
-  return () => {
-    // Cleanup observers on unmount
-    observers.forEach(({ observer, bar }) => {
-      observer.unobserve(bar);
-      observer.disconnect();
+      observer.observe(bar);
+      observers.push({ observer, bar });
     });
-  };
-}, []);
 
-    return (
-        <section id="skills" className="section portfolio-skills">
-            <div className="columns">
-                <SectionTitle title="Skills & Technologies" />
-            </div>
-            
-            <div class="columns is-flex is-justify-content-center is-multiline portfolio-skills__wrapper--desktop is-hidden-touch pt-lg-10">
-                <div className="column is-two-fifths">
-                    <SkillConsole title={"Frontend Development"} 
-                                skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                type={"progress"} />
-                </div>
-                <div className="column is-two-fifths">
-                    <SkillConsole title={"Backend Development"} 
-                                skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                type={"progress"} />
-                </div>
-                <div className="column is-two-fifths">
-                    <SkillConsole title={"Programming Languages"} 
-                                skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                type={"progress"} />
-                </div>
-                <div className="column is-two-fifths">
-                    <SkillConsole title={"Tools & Platforms"}
-                                skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                        <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                type={"badges"} />
-                </div>
-            </div>
-            <div class="portfolio-skills__wrapper--mobile is-hidden-desktop">
-                <Slider {...mobileSettings}>
-                    <div className="column">
-                        <SkillConsole title={"Frontend Development"} 
-                                    skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                    type={"progress"} />
-                    </div>
-                    <div className="column">
-                        <SkillConsole title={"Backend Development"} 
-                                    skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                    type={"progress"} />
-                    </div>
-                    <div className="column">
-                        <SkillConsole title={"Programming Languages"} 
-                                    skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                    type={"progress"} />
-                    </div>
-                    <div className="column">
-                        <SkillConsole title={"Tools & Platforms"}
-                                    skills={[<SkillBar skill_title={"Lorem Ipsom"} skill_level={5} />, 
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={4}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>,
-                                            <SkillBar skill_title={"Lorem Ipsom"} skill_level={3}/>]} 
-                                    type={"badges"} />
-                    </div>
-                </Slider>
-            </div>
-        </section>
-    );
+    return () => {
+      observers.forEach(({ observer, bar }) => {
+        observer.unobserve(bar);
+        observer.disconnect();
+      });
+    };
+  }, []);
+
+  return (
+    <section id="skills" className="section portfolio-skills">
+      <div className="columns">
+        <SectionTitle title="Skills & Technologies" />
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="columns is-flex is-justify-content-center is-multiline portfolio-skills__wrapper--desktop is-hidden-touch pt-lg-10">
+        <div className="column is-two-fifths">
+          <SkillConsole title="Frontend Development"
+            skills={[
+              <SkillBar skill_title="Javascript & Jquery" skill_level={4} />,
+              <SkillBar skill_title="CSS, Sass, Bootstrap" skill_level={3} />,
+              <SkillBar skill_title="React.Js, Vue.js, Angular" skill_level={3} />,
+              <SkillBar skill_title="ADA Compliance, Debugging" skill_level={3} />,
+              <SkillBar skill_title="Responsive Design" skill_level={4} />
+            ]}
+            type="progress"
+          />
+        </div>
+        <div className="column is-two-fifths">
+          <SkillConsole title="Backend Development"
+            skills={[
+              <SkillBar skill_title="MongoDB, Firebase" skill_level={3} />,
+              <SkillBar skill_title="Ruby & Ruby on Rails" skill_level={3} />,
+              <SkillBar skill_title="SQL, JSON, and REST APIs" skill_level={3} />,
+              <SkillBar skill_title="Liquid Templating" skill_level={4} />,
+              <SkillBar skill_title="PostgreSQL, MySQL, SQL Server" skill_level={3} />
+            ]}
+            type="progress"
+          />
+        </div>
+        <div className="column is-two-fifths">
+          <SkillConsole title="Programming Languages"
+            skills={[
+              <SkillBar skill_title="Java, Springboot" skill_level={3} />,
+              <SkillBar skill_title="C++, Typescript" skill_level={3} />,
+              <SkillBar skill_title="C#, ASP.NET, .NET" skill_level={3} />,
+              <SkillBar skill_title="PHP, and Laravel" skill_level={3} />,
+              <SkillBar skill_title="Flutter, Kotlin, Dart" skill_level={3} />
+            ]}
+            type="progress"
+          />
+        </div>
+        <div className="column is-two-fifths">
+          <SkillConsole title="Tools & Platforms"
+            skills={[
+              <SkillBar skill_title="Vscode, Eclipse, Yarn, NPM" skill_level={4} />,
+              <SkillBar skill_title="Adobe XD & Illustrator" skill_level={3} />,
+              <SkillBar skill_title="Linux, Windows, ChromeDev Tools, Terminal" skill_level={4} />,
+              <SkillBar skill_title="Wordpress, Shopify, VM" skill_level={3} />,
+              <SkillBar skill_title="Git, Git Version Control" skill_level={3} />
+            ]}
+            type="badges"
+          />
+        </div>
+      </div>
+
+      {/* Mobile Swiper Carousel */}
+      <div className="portfolio-skills__wrapper--mobile is-hidden-desktop">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+                0: {
+                    navigation: false
+                },
+                768: {
+                slidesPerView: 2,
+                navigation: true,
+                pagination: false
+                },
+                1024: {
+                slidesPerView: 4,
+                navigation: true,
+                pagination: false
+                }
+            }}
+
+        >
+          <SwiperSlide>
+            <SkillConsole title="Frontend Development"
+              skills={[
+                <SkillBar skill_title="Javascript & Jquery" skill_level={4} />,
+                <SkillBar skill_title="CSS, Sass, Bootstrap" skill_level={3} />,
+                <SkillBar skill_title="React.Js, Angular" skill_level={3} />,
+                <SkillBar skill_title="ADA Compliance" skill_level={3} />,
+                <SkillBar skill_title="Responsive Design" skill_level={4} />
+              ]}
+              type="progress"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkillConsole title="Backend Development"
+              skills={[
+                <SkillBar skill_title="MongoDB, Firebase" skill_level={3} />,
+                <SkillBar skill_title="Ruby & Ruby on Rails" skill_level={3} />,
+                <SkillBar skill_title="SQL, JSON" skill_level={3} />,
+                <SkillBar skill_title="Liquid Templating" skill_level={4} />,
+                <SkillBar skill_title="MySQL, SQL Server" skill_level={3} />
+              ]}
+              type="progress"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkillConsole title="Programming Languages"
+              skills={[
+                <SkillBar skill_title="Java, Springboot" skill_level={3} />,
+                <SkillBar skill_title="C++, Typescript" skill_level={3} />,
+                <SkillBar skill_title="C#, ASP.NET, .NET" skill_level={3} />,
+                <SkillBar skill_title="PHP, and Laravel" skill_level={3} />,
+                <SkillBar skill_title="Flutter, Kotlin, Dart" skill_level={3} />
+              ]}
+              type="progress"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkillConsole title="Tools & Platforms"
+              skills={[
+                <SkillBar skill_title="Vscode, Eclipse, Yarn, NPM" skill_level={4} />,
+                <SkillBar skill_title="Adobe XD & Illustrator" skill_level={3} />,
+                <SkillBar skill_title="Linux, Windows, Dev Tools" skill_level={4} />,
+                <SkillBar skill_title="Wordpress, Shopify, VM" skill_level={3} />,
+                <SkillBar skill_title="Git, Git Version Control" skill_level={3} />
+              ]}
+              type="badges"
+            />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </section>
+  );
 }

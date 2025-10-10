@@ -70,3 +70,7 @@
     transition: width 1s ease-out;
 }
 
+.portfolio-skills .slick-slide > div {
+    padding: 16px;
+}
+
