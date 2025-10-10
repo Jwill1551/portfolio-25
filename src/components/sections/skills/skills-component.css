@@ -74,3 +74,24 @@
     padding: 16px;
 }
 
+/*** Swiper ***/
+/*** Swiper Slider ***/
+.portfolio-skills .swiper {
+  padding-bottom: 24px;
+}
+
+.portfolio-skills .swiper-slide {
+  height: auto !important;
+}
+
+.portfolio-skills .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
+  position: relative !important;
+  top: 15px;
+  z-index: 5;
+}
+
+.portfolio-skills .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
+  & .swiper-pagination-bullet {
+    background-color: white;
+  }
+}

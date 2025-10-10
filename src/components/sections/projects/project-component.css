@@ -9,7 +9,8 @@
 }
 
 .project-card__image {
-  height: 190px;
+  max-height: 185px;
+  height: 100%;
   width: 100%;
 }
 
@@ -44,6 +45,10 @@
     right: -20px;
     z-index: 5;
   }
+
+  .portfolio-projects .project-card__image {
+    max-height: 270px;
+  }
 }
 
 .portfolio-projects__technologies svg {
@@ -58,4 +63,25 @@
 .portfolio-projects__technologies .icon__arrow svg {
   transform: none;
   transition: none;
+}
+
+/*** Swiper Slider ***/
+.portfolio-projects .swiper {
+  padding-bottom: 24px;
+}
+
+.portfolio-projects .swiper-slide {
+  height: auto !important;
+}
+
+.portfolio-projects .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
+  position: relative !important;
+  top: 15px;
+  z-index: 5;
+}
+
+.portfolio-projects .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
+  & .swiper-pagination-bullet {
+    background-color: white;
+  }
 }

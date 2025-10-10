@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './hero-component.css';
 import joshua_profile from '../../../assets/images/Me-Gray-Suit.png';
 
 export default function Hero() {
+    useEffect(() => {
+    const img = document.querySelector('.portfolio-hero__image');
+    if (img) img.classList.add('loaded');
+    }, []);
+
     return (
         <section id="hero" className="section columns is-multiline is-flex-tablet is-justify-content-center is-align-items-start portfolio-hero pt-sm-10 px-md-6 pt-md-8 pt-lg-10">
             <div className="column is-full is-two-fifths-desktop is-flex is-flex-align-items-start is-flex-direction-column">

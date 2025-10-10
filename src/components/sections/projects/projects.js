@@ -31,27 +31,36 @@ export default function Projects() {
         <SectionTitle title="Projects & Collaborations" />
       </div>
 
-      <div className="project__wrapper w-100 py-sm-6 py-md-8 py-lg-10">
+      <div className="project__wrapper w-100 px-lg-10 py-sm-6 py-md-8 py-lg-10">
         <Swiper
            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            navigation
+            navigation={{  }}
             pagination={{ clickable: true }}
             breakpoints={{
                 0: {
                     navigation: false
                 },
-                768: {
-                slidesPerView: 2,
-                navigation: true,
-                pagination: false
+                480: {
+                    slidesPerView: 1,
+                    navigation: false
                 },
-                1024: {
-                slidesPerView: 4,
-                navigation: true,
-                pagination: false
+                768: {
+                    slidesPerView: 2,
+                    navigation: false
+                },
+                1220: {
+                    slidesPerView: 3,
+                    navigation: false
+                },
+                1450: {
+                    slidesPerView: 4,
+                    navigation: false
+                },
+                1990: {
+                    slidesPerView: 5,
+                    navigation: false
                 }
             }}
         >
@@ -112,8 +121,8 @@ export default function Projects() {
         </a>
       </div>
 
-      <div className="columns is-multiline is-flex is-justify-content-space-evenly portfolio-projects__technologies mt-7">
-        <div data-aos="fade-right" className="column mb-sm-3 mb-lg-0 is-full-touch is-one-third-desktop is-flex-touch is-justify-content-center project_icon__title has-text-white title is-flex is-align-items-center">
+      <div className="columns is-multiline is-flex is-justify-content-center portfolio-projects__technologies mt-7">
+        <div data-aos="fade-right" className="column mb-sm-3 mb-lg-0 is-full-touch is-one-third-desktop is-flex-touch is-justify-content-end project_icon__title has-text-white title is-flex is-align-items-center">
           <h3 className="mb-lg-1 mr-lg-2">Technologies Used</h3>
           <span className="is-hidden-touch icon__arrow"><FaArrowRight /></span>
         </div>

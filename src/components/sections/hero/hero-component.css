@@ -49,3 +49,17 @@
     }
 
 }
+
+/*** Image Popup Effect ***/
+/* --- Pop-Up Entrance Animation --- */
+.portfolio-hero__image {
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.portfolio-hero__image.loaded {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+

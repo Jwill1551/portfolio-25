@@ -22,7 +22,7 @@
     outline: solid 3px #47DBFF;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768.50px) {
     .portfolio-header {
         padding: 40px;
     }   

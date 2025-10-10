@@ -19,6 +19,8 @@
   cursor: pointer;
   position: relative;
   z-index: 2;
+  background: rgba(0, 29, 45, 1);
+  margin-top: 16px;
 }
 
 .menu-icon,

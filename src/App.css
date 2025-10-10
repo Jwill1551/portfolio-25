@@ -34461,10 +34461,6 @@ body {
     transform: rotate(360deg);
   }
 }
-
-/*# sourceMappingURL=App.css.map */
-
-/*** Swiper Code ***/
 .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-horizontal.swiper-pagination-bullets {
   position: relative !important;
   bottom: -1px;
@@ -34474,3 +34470,5 @@ body {
 .swiper-pagination-bullet {
   background-color: white;
 }
+
+/*# sourceMappingURL=App.css.map */

@@ -59,8 +59,8 @@ export default function Skills() {
             skills={[
               <SkillBar skill_title="Javascript & Jquery" skill_level={4} />,
               <SkillBar skill_title="CSS, Sass, Bootstrap" skill_level={3} />,
-              <SkillBar skill_title="React.Js, Vue.js, Angular" skill_level={3} />,
-              <SkillBar skill_title="ADA Compliance, Debugging" skill_level={3} />,
+              <SkillBar skill_title="React.Js, Angular" skill_level={3} />,
+              <SkillBar skill_title="ADA Compliance" skill_level={4} />,
               <SkillBar skill_title="Responsive Design" skill_level={4} />
             ]}
             type="progress"
@@ -71,9 +71,9 @@ export default function Skills() {
             skills={[
               <SkillBar skill_title="MongoDB, Firebase" skill_level={3} />,
               <SkillBar skill_title="Ruby & Ruby on Rails" skill_level={3} />,
-              <SkillBar skill_title="SQL, JSON, and REST APIs" skill_level={3} />,
+              <SkillBar skill_title="SQL, JSON" skill_level={3} />,
               <SkillBar skill_title="Liquid Templating" skill_level={4} />,
-              <SkillBar skill_title="PostgreSQL, MySQL, SQL Server" skill_level={3} />
+              <SkillBar skill_title="PostgreSQL, MySQL" skill_level={3} />
             ]}
             type="progress"
           />
@@ -95,8 +95,8 @@ export default function Skills() {
             skills={[
               <SkillBar skill_title="Vscode, Eclipse, Yarn, NPM" skill_level={4} />,
               <SkillBar skill_title="Adobe XD & Illustrator" skill_level={3} />,
-              <SkillBar skill_title="Linux, Windows, ChromeDev Tools, Terminal" skill_level={4} />,
-              <SkillBar skill_title="Wordpress, Shopify, VM" skill_level={3} />,
+              <SkillBar skill_title="Linux, Windows, Dev Tools" skill_level={4} />,
+              <SkillBar skill_title="Wordpress, Shopify" skill_level={3} />,
               <SkillBar skill_title="Git, Git Version Control" skill_level={3} />
             ]}
             type="badges"
@@ -105,27 +105,24 @@ export default function Skills() {
       </div>
 
       {/* Mobile Swiper Carousel */}
-      <div className="portfolio-skills__wrapper--mobile is-hidden-desktop">
+      <div className="portfolio-skills__wrapper--mobile is-hidden-desktop px-lg-10 py-sm-6 py-md-8 py-lg-10">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            navigation
+            navigation={{  }}
             pagination={{ clickable: true }}
             breakpoints={{
                 0: {
                     navigation: false
                 },
-                768: {
-                slidesPerView: 2,
-                navigation: true,
-                pagination: false
+                480: {
+                    slidesPerView: 1,
+                    navigation: false
                 },
-                1024: {
-                slidesPerView: 4,
-                navigation: true,
-                pagination: false
+                768: {
+                    slidesPerView: 2,
+                    navigation: false
                 }
             }}
 
