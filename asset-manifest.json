@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.e62ae6e4.css",
-    "main.js": "/static/js/main.d3c5175c.js",
+    "main.js": "/static/js/main.7627589c.js",
     "static/js/453.3dacb4a2.chunk.js": "/static/js/453.3dacb4a2.chunk.js",
     "static/media/eclipse-overview.png": "/static/media/eclipse-overview.4fbc58e25f6be8c3e163.png",
     "static/media/saturday-dog-club-overview.png": "/static/media/saturday-dog-club-overview.e3db06e6ede90a3831d6.png",
@@ -13,11 +13,11 @@
     "static/media/my-resume.pdf": "/static/media/my-resume.c94717914f4a6d8e8ebf.pdf",
     "index.html": "/index.html",
     "main.e62ae6e4.css.map": "/static/css/main.e62ae6e4.css.map",
-    "main.d3c5175c.js.map": "/static/js/main.d3c5175c.js.map",
+    "main.7627589c.js.map": "/static/js/main.7627589c.js.map",
     "453.3dacb4a2.chunk.js.map": "/static/js/453.3dacb4a2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e62ae6e4.css",
-    "static/js/main.d3c5175c.js"
+    "static/js/main.7627589c.js"
   ]
 }
