@@ -122,7 +122,7 @@ export default function Projects() {
       </div>
 
       <div className="columns is-multiline is-flex is-justify-content-center portfolio-projects__technologies mt-7">
-        <div data-aos="fade-right" className="column mb-sm-3 mb-lg-0 is-full-touch is-one-third-desktop is-flex-touch is-justify-content-end project_icon__title has-text-white title is-flex is-align-items-center">
+        <div data-aos="fade-right" className="column mb-sm-3 mb-lg-0 is-full-touch is-one-third-desktop is-flex-touch is-justify-content-center project_icon__title has-text-white title is-flex is-align-items-center">
           <h3 className="mb-lg-1 mr-lg-2">Technologies Used</h3>
           <span className="is-hidden-touch icon__arrow"><FaArrowRight /></span>
         </div>

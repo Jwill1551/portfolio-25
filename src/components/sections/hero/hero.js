@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import './hero-component.css';
 import joshua_profile from '../../../assets/images/Me-Gray-Suit.png';
+import joshua_resume from '../../../assets/files/my-resume.pdf'
 
 export default function Hero() {
     useEffect(() => {
@@ -15,7 +16,7 @@ export default function Hero() {
                 <h2 className="portfolio-hero__subheading has-text-left has-text-centered-mobile has-text-white title--3">
                     As a developer who believes in doing all things with integrity, I build software that not only works efficiently — but uplifts, inspires, and serves others.
                 </h2>
-                <button className="portfolio-hero__btn btn btn--transparent-blue mx-sm-auto my-sm-5 my-md-6 my-lg-5 p-3">View my resume</button>
+                <a href={joshua_resume} download="newfilename" className="portfolio-hero__btn btn btn--transparent-blue mx-sm-auto my-sm-5 my-md-6 my-lg-5 p-3">Download my resume</a>
             </div>
             <div className="column is-align-self-flex-end is-half-desktop">
                 <img className="portfolio-hero__image img-fluid-80" src={joshua_profile} alt="Joshua Williams Profile"></img>
