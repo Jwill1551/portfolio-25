@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3e400783.css",
-    "main.js": "/static/js/main.a2e96fd7.js",
+    "main.css": "/static/css/main.fd8438dc.css",
+    "main.js": "/static/js/main.3104ccdb.js",
     "static/js/453.3dacb4a2.chunk.js": "/static/js/453.3dacb4a2.chunk.js",
     "static/media/eclipse-overview.png": "/static/media/eclipse-overview.4fbc58e25f6be8c3e163.png",
     "static/media/saturday-dog-club-overview.png": "/static/media/saturday-dog-club-overview.e3db06e6ede90a3831d6.png",
@@ -10,13 +10,14 @@
     "static/media/oxbow-overview.png": "/static/media/oxbow-overview.a49a506dc816379cf28b.png",
     "static/media/jigsaw-health-overview.png": "/static/media/jigsaw-health-overview.7868a9b2cb199e90bd3b.png",
     "static/media/jigsaw-orchard-overview.png": "/static/media/jigsaw-orchard-overview.b93c49142402f737fd79.png",
+    "static/media/my-resume.pdf": "/static/media/my-resume.c94717914f4a6d8e8ebf.pdf",
     "index.html": "/index.html",
-    "main.3e400783.css.map": "/static/css/main.3e400783.css.map",
-    "main.a2e96fd7.js.map": "/static/js/main.a2e96fd7.js.map",
+    "main.fd8438dc.css.map": "/static/css/main.fd8438dc.css.map",
+    "main.3104ccdb.js.map": "/static/js/main.3104ccdb.js.map",
     "453.3dacb4a2.chunk.js.map": "/static/js/453.3dacb4a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e400783.css",
-    "static/js/main.a2e96fd7.js"
+    "static/css/main.fd8438dc.css",
+    "static/js/main.3104ccdb.js"
   ]
 }
