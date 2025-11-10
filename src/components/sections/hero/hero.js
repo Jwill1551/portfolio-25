@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import './hero-component.css';
 import joshua_profile from '../../../assets/images/Me-Gray-Suit--updated.png';
-import joshua_resume from '../../../assets/files/my-resume.pdf'
+import joshua_resume from '../../../assets/files/my-resume-dev.pdf';
 
 export default function Hero() {
     useEffect(() => {
