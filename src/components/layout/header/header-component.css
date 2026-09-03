@@ -1,5 +1,7 @@
 .portfolio-header {
-    background-color: #001D2D;
+    background-color: #FAF9F6;
+    padding: 22px 40px !important;
+    border-bottom: solid #E4E1D9
 }
 
 .portfolio-header .portfolio-header__nav-list {
@@ -12,14 +14,39 @@
     transition: outline 0.1s ease-in-out;
 }
 
-.portfolio-header .portfolio-header__nav-list li a:focus {
-    color: #47DBFF !important;
+.portfolio-header .portfolio-header__nav-name span {
+    color:#1C1B19;
+    font: 19px;
+    font-weight: bold;
+}
+
+.portfolio-header .portfolio-header__nav-list li a {
+    color: #524F49 !important;
+}
+
+.portfolio-header .portfolio-header__nav-list li button {
+    border-radius: 25px;
+    border: solid 2px #2C6E8C;
+    padding: 10px 22px;
+    color: #2C6E8C;
+    transition: background 0.2s ease-in, color 0.2s ease-in;
+}
+
+.portfolio-header .portfolio-header__nav-list li button:hover {
+    color: white;
+    background: #2C6E8C;
+}
+
+.portfolio-header .portfolio-header__nav-list .nav-list__item,
+.portfolio-header__nav-name {
+    align-self: center;
 }
 
 .portfolio-header .nav-list__item a:hover,
 .portfolio-header .nav-list__item a:focus-visible {
-    color: #47DBFF !important;
-    outline: solid 3px #47DBFF;
+    color: #389dcd !important;
+    border-bottom: solid 2px #389dcd;
+    transition: border-bottom 0.2s ease-in;
 }
 
 @media screen and (min-width: 768.50px) {

@@ -54,5 +54,8 @@
   "homepage": "https://jwill1551.github.io/portfolio-25/",
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.1": true
   }
 }

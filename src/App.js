@@ -1,4 +1,5 @@
 import './App.css';
+import './assets/styles/newUI.css'
 import 'jquery/dist/jquery.slim';
 
 /*** Import Components ***/
